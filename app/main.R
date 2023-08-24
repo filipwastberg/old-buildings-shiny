@@ -1,6 +1,8 @@
 box::use(
   shiny[bootstrapPage, div, moduleServer, NS, renderUI, tags, uiOutput, icon],
-  bs4Dash[dashboardPage, dashboardHeader, dashboardSidebar, box, bs4Card, sidebarMenu, menuItem, dashboardFooter, dashboardBody, tabItem, tabItems, dashboardControlbar]
+  bs4Dash[dashboardPage, dashboardHeader, dashboardSidebar, box, bs4Card,
+          sidebarMenu, menuItem, dashboardFooter, dashboardBody,
+          tabItem, tabItems, dashboardControlbar]
 )
 
 box::use(

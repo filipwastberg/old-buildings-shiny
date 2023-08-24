@@ -1,5 +1,3 @@
-# app/view/chart.R
-
 box::use(
   leaflet,
   shiny[moduleServer, NS, observeEvent, tagList, uiOutput, renderUI, reactive, selectizeInput, fluidRow],
@@ -30,7 +28,7 @@ ui <- function(id) {
 #' @export
 server <- function(id, buildings) {
   moduleServer(id, function(input, output, session) {
-    
+
     output$kommun_select <- renderUI({
       selectizeInput(
         session$ns("kommun"),
@@ -39,16 +37,13 @@ server <- function(id, buildings) {
         selected = unique(buildings()$kommun)[[1]],
           multiple = TRUE, options = list(maxItems = 2)
         )
-      
     })
-    
-    
+
     output$map <- leaflet$renderLeaflet({
-      
+
       leaflet$leaflet() |> 
         leaflet$addProviderTiles(leaflet$providers$Stamen.Toner, group = "Svartvit") |> 
         leaflet$addProviderTiles(leaflet$providers$Esri.WorldImagery, group = "Satellit") |> 
-
         leaflet$addAwesomeMarkers(
           data = filter(buildings(), kommun %in% input$kommun),
           ~lng, ~lat,
@@ -62,17 +57,12 @@ server <- function(id, buildings) {
             '<header style="position: relative; top: 1px; bottom: 1px"><h6>', sitename, "</h6>",
             "<i>Historisk kategori: ", historisk_kategori_smal, "</i></br>",
             "Byggnadsår: ", byggnadsar_start
-            
             ),
           group = "ibinder") |> 
         leaflet$addLayersControl(
           baseGroups = c("Satellit", "Svartvit"),
           options = leaflet$layersControlOptions(collapsed = FALSE)
         )
-      
-      
     })
-    
   })
-  
 }

@@ -5,7 +5,6 @@ box::use(
 
 building_ui <- function(id) {
   ns <- NS(id)
-  
   ns("read_data")
 }
 
@@ -16,5 +15,3 @@ buildings <- function(id, system) {
     })
   })
 }
-
-
