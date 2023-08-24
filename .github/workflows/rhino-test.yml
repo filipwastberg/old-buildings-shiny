@@ -24,6 +24,11 @@ jobs:
         run: >
           sudo apt-get update && sudo apt-get install --yes
           libcurl4-openssl-dev
+          apt-get install -y libgdal-dev
+          apt-get install -y gdal-bin
+          apt-get install -y libgeos-dev
+          apt-get install -y libproj-dev
+          apt-get install -y libsqlite3-dev
 
       - name: Restore renv from cache
         uses: actions/cache@v2

@@ -2,3 +2,4 @@
 library(bs4Dash)
 library(leaflet)
 library(rhino)
+library(terra)
